@@ -1,0 +1,32 @@
+img {
+    width: 300px;
+}
+
+body {
+    text-align: center;
+    font-family: 'Arial';
+    background: black color(srgb rgb(255, 0, 0) green blue)
+}
+#content h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000; /* main subheader color */
+    margin-top: 30px;
+}
+
+#content h3 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+}
+
+#content p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#content strong {
+    color: #ffcc00; /* highlight important words */
+}
