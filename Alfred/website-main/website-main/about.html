@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Use UTF-8 and add mobile viewport -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <title>About Us - St Augustine's Hack Club</title>
+        <link rel="icon" type="image/x-icon" href="https://assets.hackclub.com/icon-progress-rounded.svg">
+        <!-- Lightweight responsive helpers -->
+        <style>
+            img { max-width: 100%; height: auto; }
+            body { margin: 0; }
+            @media (max-width: 600px) {
+                nav { flex-wrap: wrap; gap: 0.5em; padding: 0 0.5rem; }
+                nav a { display: block; padding: 0.75em 1.25em; }
+            }
+        </style>
+        <script>
+      // Get cookie value by name
+            function getCookie (name) {
+                let value = `; ${document.cookie}`;
+                let parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+            // Set cookie key and value
+            function setCookie (key, value) {
+                document.cookie = `${key}=${value}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Strict; Secure;`;
+            }
+        </script>
+    </head>
+    <body data-theme="light">
+        <!-- Skip to main content link (must be first focusable element) -->
+        <a href="#main-content" class="skip-to-main-content-link">Skip to main content</a>
+        
+        <!-- Add banner as first child so fixed positioning is relative to the viewport -->
+        <a class="banner" href="https://hackclub.com/" aria-label="Hack Club home" target="_blank" rel="noopener">
+            <img src="https://assets.hackclub.com/flag-orpheus-top.svg" alt="Hack Club">
+        </a>
+
+        <nav aria-label="Primary" style="display: flex; justify-content: center; gap: 1em; margin-top: 1em; margin-bottom: 1em;">
+            <a href="index.html" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Home</a>
+            <a href="about.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">About Us</a>
+            <a href="how_to.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Help</a>
+            <a href ="projects.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Projects</a>
+        </nav>
+        <main id="main-content" class="container">
+            <h1>About Us</h1>
+            <p>We are a group of Yr11 students who are working together with a goal to grow the interest of students in technology and programming especially outside of what is taught in the classroom.</p>
+            <p>Our club leaders are:</p>
+            <div class="leader">
+                <h3>Alfred Heelas</h3>
+                <p><i><a href="mailto:21heelasa@st-augustines.wilts.sch.uk?subject=Hack%20Club">21heelasa@sta.cc</a></i></p>
+                <a href="https://github.com/heelas-uk">
+                <img src="https://avatars.githubusercontent.com/u/180876265" alt="Alfred Heelas" width="150" height="150" style="border-radius: 50%;">
+                </a>
+                <h4>Club Leader</h4>
+                <p>Hi, I there I am Alfred I have coded for years and have a pretty broad knowledge of technology from hardware to software development. That being said I am by no means an expert - I am always looking to learn more by people who are more knowledgeable than me.</p>
+                <p>Outside of school, I fly gliders (because only people who don't have skill need an engine) and enjoy flying in my free time. I also occasionally touch grass.</p>
+
+                <h3>Jasmine Nash</h3>
+                <p><i><a href="mailto:21nashj@st-augustines.wilts.sch.uk?subject=Hack%20Club">21nashj@sta.cc</a></i></p>
+                <a href="mailto:21nashj@st-augustines.wilts.sch.uk?subject=Hack%20Club">
+                    <img src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/9a99feda418e8957b336d870a188a2d1e9a93bfc_img-20251018-wa0031_1_.jpg" alt="Jasmine Nash's fav spider" width="150" height="150" style="border-radius: 50%;">
+                </a>
+                <h4>Club Leader</h4>
+                <p>Ello, the name's Jasmine and I like and fly planes (cooler than gliders any day), spiders, and Mitski. I'm very chill and chronically online. Talk to me about Undertale.</p>
+                <h3>Ivie Clifford</h3>
+                <p><i><a href="mailto:21cliffordi@st-augustines.wilts.sch.uk?subject=Hack%20Club">21cliffordi@sta.cc</a></i></p>
+                <a href="mailto:21cliffordi@st-augustines.wilts.sch.uk?subject=Hack%20Club">
+                    <img src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/a9e21d7058959af5a7338163ebdc424e3448ac45_image.jpg" alt="Ivie Clifford" width="150" height="150" style="border-radius: 50%;">
+                </a>                
+                <h4>Club Leader</h4>
+                <p>Hi my name is Ivie, any questions I'm always free for a chat!</p>
+            </div>
+            <label id="theme" for="theme_toggler" aria-label="Toggle color theme">
+            <input type="checkbox" id="theme_toggler" class="visuallyhidden">
+            </label>
+            <script>
+            const toggler = document.querySelector('#theme_toggler');
+            const media = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            const getSystemTheme = () => {
+                return media.matches ? "dark" : "light";
+            }
+            
+            // Set the theme, update the UI and the cookie
+            const setTheme = (color) => {
+                setCookie('theme', color)
+                document.querySelector('body').dataset.theme = color;
+                toggler.checked = color === 'dark' ? true : false;
+                let other = color === 'dark' ? 'light' : 'dark';
+                toggler.ariaLabel = `Switch to ${other} mode`;
+            }
+            
+            // Use cookie preference if it exists; otherwise use browser preference
+            if ( getCookie('theme') ) {
+                setTheme(getCookie('theme'))
+            } else {
+                setTheme(getSystemTheme())
+            }
+            
+            // Listen for checkbox toggle
+            toggler.addEventListener('change', () => {
+                toggler.checked ? setTheme('dark') : setTheme('light');
+            });
+            // Listen for browser preference change
+            media.onchange = () => {
+                setTheme(getSystemTheme())
+            }
+        </script>
+    </body>
+
+
+    <footer>
+        <p style="text-align: center; font-size: 0.9em; margin-top: 2em; margin-bottom: 1em;">
+            &copy; 2025 St Augustine's Hack Club. Text, HTML, and CSS reusable under the MIT License; leader images reproduced with permission all rights reserved; Hack Club branding reproduced under <a href="https://hackclub.com/brand/">License.</a>
+
+        </p>
+
+        <address style="text-align: center; margin-bottom: 1em; font-size: 0.9em;">
+            Made with ❤️ held together by Alfred Heelas, Jasmine Nash, and Ivie Clifford. <a href="mailto:21nashj@st-augustines.wilts.sch.uk; 21heelasa@st-augustines.wilts.sch.uk; 21cliffordi@st-augustines.wilts.sch.uk?subject=Hack%20Club">Email us!</a>
+        </address>
+    </footer>
+</html>
+
