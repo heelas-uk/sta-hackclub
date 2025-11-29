@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Use UTF-8 and add mobile viewport -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>St Augustine's Hack Club</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="https://assets.hackclub.com/icon-progress-rounded.svg">
+        <!-- Lightweight responsive helpers (no .container override so About uses Index padding) -->
+        <style>
+            img { max-width: 100%; height: auto; }
+            body { margin: 0; }
+            @media (max-width: 600px) {
+                nav { flex-wrap: wrap; gap: 0.5em; padding: 0 0.5rem; }
+                nav a { display: block; padding: 0.75em 1.25em; }
+            }
+        </style>
+        <script>
+      // Get cookie value by name
+            function getCookie (name) {
+                let value = `; ${document.cookie}`;
+                let parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+            // Set cookie key and value
+            function setCookie (key, value) {
+                document.cookie = `${key}=${value}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Strict; Secure;`;
+            }
+        </script>
+    </head>
+    <body data-theme="light">
+        <!-- Skip to main content link (must be first focusable element) -->
+        <a href="#main-content" class="skip-to-main-content-link">Skip to main content</a>
+        
+        <!-- Add banner as first child so fixed positioning is relative to the viewport -->
+        <a class="banner" href="https://hackclub.com/" aria-label="Hack Club home" target="_blank" rel="noopener">
+            <img src="https://assets.hackclub.com/flag-orpheus-top.svg" alt="Hack Club">
+        </a>
+        <!-- Accent menu above main container -->
+        <nav aria-label="Primary" style="display: flex; justify-content: center; gap: 1em; margin-top: 1em; margin-bottom: 1em;">
+            <a href="index.html" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Home</a>
+            <a href="about.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">About Us</a>
+            <a href="how_to.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Help</a>
+            <a href ="projects.html" aria-current="page" style="padding: 0.5em 1em; border-radius: 6px; text-decoration: none; font-weight: 750;">Projects</a>
+        </nav>
+        <main id="main-content" class="container">
+            <h1>St Augustine's Hack Club</h1>
+            <h3>
+                What do we do?
+            </h3>
+            <p>
+                We are a club based out of IT1 that meets every Thursday lunch to build cool stuff. We make a mixture of hardware (robots, cookie cutters) and software (websites, games, apps). By hacking we don't mean breaking into stuff, we mean creating and building things and finding creative solutions to problems.
+
+                <b>It is nothing near a normal lesson, not even close. We teach practical skills that are never on exams.</b>
+            </p>
+            
+            <h3>Who are Hack Club?</h3>
+            <p> 
+                Hack Club is a global not-for-profit 501(c)(3) that provides students like us with funding to run clubs, make projects, and attend events. They are funded by the likes of Github (Microsoft), Jack Dorsey (Twitter), and Elon Musk (SpaceX).
+            </p>
+            <h3>What's the catch?</h3>
+            <p>
+                There is no catch. However, some projects require you to publish the code you use, and of course, you must follow school rules and <a href="https://hackclub.com/conduct/" target="_blank">Hack Club's code of conduct</a>.
+            </p>
+            <h3>What's in it for me?</h3>
+            <p>
+                Hack Club offers several grant programs. To join, please fill out the form <a href="https://dashboard.hackclub.com/join-club?code=CXCPK04V" target="_blank">here using your school email (you can use @sta.cc to save time)</a>. You will be added to a dashboard where you can access resources and information about upcoming meetings.
+            </p>
+            <h3>I have a question!</h3>
+            <p>
+                No worries 😊 You can reach out to us by emailing <a href="mailto:sta@hackclub.uk">sta@hackclub.uk</a>, or you can come to IT during one of our sessions and we will be happy to answer your questions.
+            </p>
+            <h3>Who are you?</h3>
+            <p>You can learn more about the club leaders <a href="about.html">here</a>.</p>
+        </main>
+
+        <label id="theme" for="theme_toggler" aria-label="Toggle color theme">
+            <input type="checkbox" id="theme_toggler" class="visuallyhidden">
+        </label>
+        <script>
+            const toggler = document.querySelector('#theme_toggler');
+            const media = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            const getSystemTheme = () => {
+                return media.matches ? "dark" : "light";
+            }
+            
+            // Set the theme, update the UI and the cookie
+            const setTheme = (color) => {
+                setCookie('theme', color)
+                document.querySelector('body').dataset.theme = color;
+                toggler.checked = color === 'dark' ? true : false;
+                let other = color === 'dark' ? 'light' : 'dark';
+                toggler.ariaLabel = `Switch to ${other} mode`;
+            }
+            
+            // Use cookie preference if it exists; otherwise use browser preference
+            if ( getCookie('theme') ) {
+                setTheme(getCookie('theme'))
+            } else {
+                setTheme(getSystemTheme())
+            }
+            
+            // Listen for checkbox toggle
+            toggler.addEventListener('change', () => {
+                toggler.checked ? setTheme('dark') : setTheme('light');
+            });
+            // Listen for browser preference change
+            media.onchange = () => {
+                setTheme(getSystemTheme())
+            }
+        </script>
+    </body>
+
+    <footer>
+        <p style="text-align: center; font-size: 0.9em; margin-top: 2em; margin-bottom: 1em;">
+            &copy; 2025 St Augustine's Hack Club. Text, HTML, and CSS reusable under the MIT License; Hack Club branding reproduced under <a href="https://hackclub.com/brand/">License.</a>
+
+        </p>
+
+        <address style="text-align: center; margin-bottom: 1em; font-size: 0.9em;">
+            Made with ❤️ held together by Alfred Heelas, Jasmine Nash, and Ivie Clifford. <a href="mailto:21nashj@st-augustines.wilts.sch.uk; 21heelasa@st-augustines.wilts.sch.uk; 21cliffordi@st-augustines.wilts.sch.uk?subject=Hack%20Club">Email us!</a>
+        </address>
+    </footer>
+
+</html>

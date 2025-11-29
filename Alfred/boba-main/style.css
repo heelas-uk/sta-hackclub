@@ -1,0 +1,14 @@
+
+body{
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 354;
+    font-style: normal;
+    background-color: #A2D6F9;
+    color: #091540;
+    ::selection {
+    background-color: #FE5F55;
+    color: #fff;
+}
+}
