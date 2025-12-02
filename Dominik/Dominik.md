@@ -1,4 +1,4 @@
-# Dominik Hack Club work
+# Dominik's Hack Club work
 
 This folder is organised by the project name and then a copy of the project files along with the repo link (if applicable). It is not a reflection of the maintainers views.
 
